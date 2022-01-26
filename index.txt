@@ -7,6 +7,6 @@ npx aws-api-gateway-cli-test \
 --identity-pool-id='us-east-1:ff5f6805-a2e9-4135-b209-a77aa73c8528' \
 --invoke-url='https://04t5j8rgg5.execute-api.us-east-1.amazonaws.com' \
 --api-gateway-region='us-east-1' \
---path-template='/notes' \
+--path-template='/billing' \
 --method='POST' \
---body='{"content":"hello world","attachment":"hello.jpg"}'
+--body='{"source":"tok_visa","storage":21}'
