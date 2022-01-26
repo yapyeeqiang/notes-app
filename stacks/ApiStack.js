@@ -1,6 +1,6 @@
 import { Stack, Api } from '@serverless-stack/resources';
 
-export default class ApiStack extends Stack {
+export default class APIStack extends Stack {
 	api;
 
 	constructor(scope, id, props) {
@@ -10,6 +10,7 @@ export default class ApiStack extends Stack {
 
 		// Create the API
 		this.api = new Api(this, 'Api', {
+			defaultAuthorizationType: 'AWS_IAM',
 			defaultFunctionProps: {
 				environment: {
 					TABLE_NAME: table.tableName,

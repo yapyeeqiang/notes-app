@@ -6,14 +6,13 @@ export const main = handler(async (event) => {
 		TableName: process.env.TABLE_NAME,
 		// 'Key' defines the partition key and sort key of the item to be retrieved
 		Key: {
-			userID: '123', // The id of the author
+			userID: event.requestContext.authorizer.iam.cognitoIdentity
+				.identityId, // The id of the author
 			noteID: event.pathParameters.id, // The id of the note from the path
 		},
 	};
 
 	const result = await dynamoDB.get(params);
-
-	console.log(result, '<<<<<');
 
 	if (!result.Item) {
 		throw new Error('Item not found.');
