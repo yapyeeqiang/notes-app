@@ -12,7 +12,24 @@ class StorageStack extends Stack {
 	constructor(scope, id, props) {
 		super(scope, id, props);
 
-		this.bucket = new Bucket(this, 'Uploads');
+		this.bucket = new Bucket(this, 'Uploads', {
+			s3Bucket: {
+				cors: [
+					{
+						maxAge: 3000,
+						allowedOrigins: ['*'],
+						allowedHeaders: ['*'],
+						allowedMethods: [
+							'GET',
+							'PUT',
+							'POST',
+							'DELETE',
+							'HEAD',
+						],
+					},
+				],
+			},
+		});
 
 		this.table = new Table(this, 'Notes', {
 			fields: {

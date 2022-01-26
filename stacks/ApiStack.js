@@ -17,6 +17,7 @@ export default class APIStack extends Stack {
 					STRIPE_SECRET_KEY: process.env.STRIPE_SECRET_KEY,
 				},
 			},
+			cors: true,
 			routes: {
 				'GET /notes': 'src/list.main',
 				'GET /notes/{id}': 'src/get.main',
